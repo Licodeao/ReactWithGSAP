@@ -74,6 +74,10 @@ useEffect(() => {
   });
 
   crossRevealTween
+  	/**
+  	*	xPercent、yPercent支持动态传入
+  	* fromTo(containerRef.current, { [crossReveal]: 100, x: 0 }, { [crossReveal]: 0 })
+  	*/
     .fromTo(containerRef.current, { xPercent: 100, x: 0 }, { xPercent: 0 })
     // 同时图片反方向移动
     .fromTo(imageRef.current, { xPercent: -100, x: 0 }, { xPercent: 0 }, 0)
@@ -98,5 +102,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 ## 动画效果
 
+![animation-1](https://github.com/Licodeao/ReactWithGSAP/blob/master/gifs/animation-1.gif)
 
+![animation-2](https://github.com/Licodeao/ReactWithGSAP/blob/master/gifs/animation-2.gif)
 
