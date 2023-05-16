@@ -1,10 +1,13 @@
-import React, { memo, forwardRef } from "react";
-import type { FC, ReactNode } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import type { ForwardRefRenderFunction } from "react";
+import { gsap } from "gsap";
 import styled from "styled-components";
 
-interface IProps {
-  children?: ReactNode;
-}
+type propType = {};
+
+type handleType = {
+  moveTo: (x: number, y: number) => void;
+};
 
 const StyledParallaxWrapper = styled.div`
   position: absolute;
@@ -15,9 +18,26 @@ const StyledParallaxWrapper = styled.div`
   will-change: transform;
 `;
 
-const Midground: FC<IProps> = forwardRef(() => {
+const Midground: ForwardRefRenderFunction<handleType, propType> = (
+  props,
+  forwardedRef
+) => {
+  const el = useRef(null);
+  useImperativeHandle(
+    forwardedRef,
+    () => ({
+      moveTo(x: number, y: number) {
+        gsap.to(el.current, {
+          x,
+          y,
+        });
+      },
+    }),
+    []
+  );
+
   return (
-    <StyledParallaxWrapper>
+    <StyledParallaxWrapper ref={el}>
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +120,6 @@ const Midground: FC<IProps> = forwardRef(() => {
       </svg>
     </StyledParallaxWrapper>
   );
-});
+};
 
-export default memo(Midground);
+export default forwardRef(Midground);

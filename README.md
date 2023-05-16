@@ -43,6 +43,47 @@ GSAP可以对JavaScript可以操作的所有内容进行动画处理（CSS属性
 
 ## API
 
+### Timeline
+
+对动画进行排序，从而动画按照时间线执行。简化了对动画的整体控制，并精确地管理时间安排。
+
+xPercent、yPercent支持动态传入
+
+```tsx
+// 示例
+  
+useEffect(() => {
+  const crossRevealTween = gsap.timeline({
+    defaults: { ease: "none" },
+    scrollTrigger: {
+      // 触发动画的元素
+      trigger: triggerRef.current as gsap.DOMTarget,
+      // 动画开始的位置
+      start: "center center",
+      // 动画结束的位置
+      end: () => "+=" + triggerRef.current!.offsetWidth,
+      // 使进度条在开始和结束之间充当一个刷子
+      scrub: true,
+      // 钉住动画
+      pin: true,
+      // pin住某个元素，防止产生轻微的抖动
+      anticipatePin: 1,
+      // 标记某个元素，方便查看动画是否成功
+      markers: true,
+    },
+  });
+
+  crossRevealTween
+    .fromTo(containerRef.current, { xPercent: 100, x: 0 }, { xPercent: 0 })
+    // 同时图片反方向移动
+    .fromTo(imageRef.current, { xPercent: -100, x: 0 }, { xPercent: 0 }, 0)
+    // 同时淡入name和job
+    .from(personRef.current, { autoAlpha: 0 }, 0)
+    // 同时淡入quote
+    .from(quoteRef.current, { autoAlpha: 0, delay: 0.26 }, 0);
+}, []);
+```
+
 ### ScrollTrigger
 
 用最少的代码创建基于滚动的动画，在页面滚动到某些位置以及在某些元素进入视口时触发动画，支持水平和垂直滚动。
@@ -54,4 +95,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // 注册插件
 gsap.registerPlugin(ScrollTrigger);
 ```
+
+## 动画效果
+
+
 

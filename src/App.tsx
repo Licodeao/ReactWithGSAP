@@ -26,6 +26,24 @@ function App() {
         job="developer"
         sentenceOne="We only launch"
         sentenceTwo="What we love"
+        crossReveal="xPercent"
+      />
+      <ContentSection
+        title="Take care"
+        description="Poutine trust fund DIY pabst, art party hoodie you probably haven't heard of them single-origin coffee kombucha slow-carb glossier occupy cliche."
+      />
+      <CrossRevealSection
+        face={landscape}
+        landscape={beach}
+        name="Licodeao"
+        job="developer"
+        sentenceOne="We only launch"
+        sentenceTwo="What we love"
+        crossReveal="yPercent"
+      />
+      <ContentSection
+        title="Take care"
+        description="Poutine trust fund DIY pabst, art party hoodie you probably haven't heard of them single-origin coffee kombucha slow-carb glossier occupy cliche."
       />
     </>
   );

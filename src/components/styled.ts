@@ -39,22 +39,22 @@ export const CrossRevealSectionWrapper = styled.section`
     height: 100%;
   }
 
+  .afterImage {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    transform: translate(100%, 0);
+  }
+
+  .afterImage img {
+    transform: translate(-100%, 0);
+  }
+
   .crossRevealImage img {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
-  }
-
-  .afterImage {
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    transform: translate(50%, 0);
-  }
-
-  .afterImage img {
-    transform: translate(-50%, 0);
   }
 
   .person_content {
@@ -85,7 +85,7 @@ export const CrossRevealSectionWrapper = styled.section`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    margin: 0;
+    margin: 0 0;
 
     .quote_sentence {
       line-height: 1.03;
@@ -96,7 +96,7 @@ export const CrossRevealSectionWrapper = styled.section`
     }
 
     .author_name {
-      line-height: 1.14;
+      line-height: 1.14286;
       font-weight: 700;
       font-size: 28px;
       letter-spacing: 0;

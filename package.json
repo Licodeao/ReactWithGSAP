@@ -11,7 +11,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "@types/source-list-map": "^0.1.2",
-    "gsap": "^3.11.5",
+    "gsap": "^3.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

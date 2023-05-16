@@ -1,13 +1,16 @@
-import React, { memo, forwardRef } from "react";
-import type { FC, ReactNode } from "react";
+import React, { forwardRef, useRef, useImperativeHandle } from "react";
+import type { ForwardRefRenderFunction } from "react";
+import { gsap } from "gsap";
 import styled from "styled-components";
 import f1 from "@/assets/flower1.svg";
 import f2 from "@/assets/flower2.svg";
 import f3 from "@/assets/flower3.svg";
 
-interface IProps {
-  children?: ReactNode;
-}
+type propType = {};
+
+type handleType = {
+  moveTo: (x: number, y: number) => void;
+};
 
 const ForegroundWrapper = styled.div`
   display: flex;
@@ -21,14 +24,32 @@ const ForegroundWrapper = styled.div`
   will-change: transform;
 `;
 
-const Foreground: FC<IProps> = forwardRef((props, ref) => {
+const Foreground: ForwardRefRenderFunction<handleType, propType> = (
+  props,
+  forwardedRef
+) => {
+  const el = useRef(null);
+
+  useImperativeHandle(
+    forwardedRef,
+    () => ({
+      moveTo(x: number, y: number) {
+        gsap.to(el.current, {
+          x,
+          y,
+        });
+      },
+    }),
+    []
+  );
+
   return (
-    <ForegroundWrapper>
+    <ForegroundWrapper ref={el}>
       <img src={f1} alt="f1" />
       <img src={f2} alt="f2" />
       <img src={f3} alt="f3" />
     </ForegroundWrapper>
   );
-});
+};
 
-export default memo(Foreground);
+export default forwardRef(Foreground);
