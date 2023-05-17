@@ -2,6 +2,8 @@
 
 搭配 React, 学习 GSAP
 
+[GSAP官方文档](https://greensock.com/)
+
 ## 初步配置
 
 安装依赖项
