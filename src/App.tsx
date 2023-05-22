@@ -6,6 +6,7 @@ import { SectionWrapper, SectionTitleWrapper } from "./styled";
 import ParallaxSection from "@/components/ParallaxSection/index";
 import ContentSection from "@/components/ContentSection";
 import CrossRevealSection from "@/components/CrossRevealSection";
+import ProductionSection from "@/components/ProductionSection";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <SectionTitleWrapper>React With GSAP</SectionTitleWrapper>
         <ParallaxSection />
       </SectionWrapper>
+
+      <ProductionSection />
+
       <ContentSection
         title="Take care"
         description="Poutine trust fund DIY pabst, art party hoodie you probably haven't heard of them single-origin coffee kombucha slow-carb glossier occupy cliche."
